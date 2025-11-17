@@ -4,59 +4,28 @@
 #include <time.h>
 #include <string.h>
 
-void game_over(){
+void game_over(int score){
     clear();
     int max_y, max_x;
     getmaxyx(stdscr, max_y, max_x);
-    
     init_pair(2, COLOR_RED, COLOR_BLACK);
-    
     int center_y = max_y / 2;
     int center_x = max_x / 2;
-    
-    // Even simpler, more compact text
-    char* game_over_text[] = {
-        "  ██████   █████  ███    ███ ███████  ",
-        " ██       ██   ██ ████  ████ ██       ",
-        " ██   ███ ███████ ██ ████ ██ █████    ",
-        " ██    ██ ██   ██ ██  ██  ██ ██       ",
-        "  ██████  ██   ██ ██      ██ ███████  ",
-        "                                       ",
-        "  ██████  ██    ██ ███████ ██████     ",
-        " ██    ██ ██    ██ ██      ██   ██    ",
-        " ██    ██ ██    ██ █████   ██████     ",
-        " ██    ██  ██  ██  ██      ██   ██    ",
-        "  ██████    ████   ███████ ██   ██    "
-    };
-    
-    int num_lines = 11;
-    
-    attron(COLOR_PAIR(2) | A_BOLD);
-    
-    // Print each line
-    for (int i = 0; i < num_lines; i++) {
-        int line_width = strlen(game_over_text[i]);
-        int x_pos = (max_x - line_width) / 2;
-        int y_pos = center_y - num_lines/2 + i;
-        
-        // Safety check
-        if (y_pos >= 0 && y_pos < max_y && x_pos >= 0) {
-            mvprintw(y_pos, x_pos, "%s", game_over_text[i]);
-        }
-    }
-    
-    attroff(COLOR_PAIR(2) | A_BOLD);
-    
-    // Print message
+
     attron(COLOR_PAIR(2));
-    char* msg = "Press any key to continue...";
-    int msg_y = center_y + num_lines/2 + 2;
-    int msg_x = (max_x - strlen(msg)) / 2;
-    if (msg_y < max_y && msg_x >= 0) {
-        mvprintw(msg_y, msg_x, "%s", msg);
+    mvprintw(center_y, (max_x - strlen("Game Over")) / 2, "Game Over");
+    mvprintw(center_y + 2, (max_x - strlen("Press any key to continue...")) / 2,"Press any key to continue...");
+    char score_str[50];
+    static int high = 0;
+    if (score > high){
+        high = score;
     }
+    sprintf(score_str, "Final Score: %d |  High Score: %d", score, high);
+    int score_x = (max_x - strlen(score_str)) / 2;
+    int score_y = center_y + 4;
+    mvprintw(score_y, score_x, "%s", score_str);
     attroff(COLOR_PAIR(2));
-    
+
     refresh();
     nodelay(stdscr, FALSE);
     getch();

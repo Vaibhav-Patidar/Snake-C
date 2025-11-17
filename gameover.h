@@ -4,6 +4,6 @@
 
 #include <ncurses.h>
 
-void game_over();
+void game_over(int score);
 
 #endif
