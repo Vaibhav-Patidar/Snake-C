@@ -2,69 +2,35 @@
 🎓 First Semester End-Semester Project
 
 A classic terminal-based Snake Game built entirely in C using the ncurses library.
-This game was developed as my First Sem End-Sem Project, featuring:
-
-Smooth snake movement
-
-Random food spawning
-
-Score + High Score system
-
-Increasing game speed
-
-Clean & centered Game Over screen
-
-Full ncurses-based UI
-
-🔥 Game Preview (Terminal Output)
-+-----------------------------------------+
-|        S N A K E    G A M E 🐍          |
-|                                         |
-|                 o###                    |
-|                                         |
-|                 $                       |
-+-----------------------------------------+
+This project was created as my First Semester End-Sem Project.
 
 🚀 Features
-🟩 Smooth Real-Time Movement
 
-Controlled using arrow keys with nodelay() for lag-free gameplay.
+🟩 Smooth real-time snake movement
 
-🍎 Random Food Generation
+🍎 Random food spawning
 
-Food appears at random valid positions inside the boundary using rand().
+📈 Score & High Score system
 
-📈 Scoring System
+⚡ Speed increases as you eat food
 
-Every food eaten:
+💀 Clean, centered Game Over screen
 
-Increases score
+🎨 ncurses-based UI
 
-Increases speed (game gets harder)
+🎯 Border collision detection
 
-Updates high score
+🖥️ Game Preview (Terminal Style)
++----------------------------------------+
+|            S N A K E   G A M E         |
+|                                        |
+|                o###                    |
+|                  $                     |
+|                                        |
++----------------------------------------+
 
-Displayed on Game Over screen.
 
-💀 Game Over Screen
-
-Centered and clean output like:
-
-GAME OVER
-Press any key to continue...
-Final Score: 7  |  High Score: 12
-
-🛠️ Technologies Used
-
-C Language
-
-ncurses (graphics + input)
-
-unistd.h (usleep)
-
-time.h (rand seeding)
-
-Makefile
+(This is a simplified preview — actual output depends on your terminal size.)
 
 🎮 Controls
 Key	Action
@@ -73,6 +39,20 @@ Key	Action
 ⬅️	Move Left
 ➡️	Move Right
 ESC	Quit Game
+🛠️ Tech Used
+
+C Programming
+
+ncurses
+
+time.h
+
+unistd.h
+
+stdlib.h
+
+Makefile
+
 📦 Installation & Running
 1. Install ncurses (if needed)
 
@@ -96,17 +76,17 @@ Or manually:
 
 cc main.c start.c gameover.c eating.c -lncurses -o snake
 
-3. Run the game
+3. Run it
 ./snake
 
 📁 Project Structure
 Snake-C/
 │
-├── main.c          # Core game logic and loop
-├── start.c         # Start screen and initialization
-├── printing.c      # Snake rendering functions
+├── main.c          # Core game loop
+├── start.c         # Start screen
+├── printing.c      # Snake rendering
 ├── eating.c        # Food spawning logic
-├── gameover.c      # Game over screen + final score + high score
+├── gameover.c      # Game Over + score display
 │
 ├── start.h
 ├── printing.h
@@ -118,48 +98,37 @@ Snake-C/
 
 🧠 Game Logic Summary
 
-Main loop handles:
+Snake moves based on arrow keys
 
-Input
+Food spawns randomly inside the border
 
-Movement
+Score increases on food eat
 
-Screen redraw
+Snake speed increases as score increases
 
-Collision detection
+Collision with border → Game Over
 
-Food eating
+Game Over screen shows:
 
-Food is displayed until eaten
+Final Score
 
-When eaten:
+High Score (saved in memory)
 
-Score increases
+Game restarts after key press
 
-New food spawns
-
-Speed increases gradually
-
-Game ends when snake hits border
-
-Game Over screen displays score + high score
-
-⭐ Future Improvements
+✨ Future Improvements
 
 Snake body growth
 
 Self-collision detection
 
-Difficulty modes
+Difficulty settings
 
-High score saved to file
+Permanent high score saved to file
 
-Better start menu
+Sound effects
 
-Sound effects (terminal bell)
-
-🙌 Author
+👨‍💻 Author
 
 Vaibhav Patidar
-First Semester • End-Sem Project
-C Programming + NCURSES
+First Semester — End Semester Project
