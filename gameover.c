@@ -20,7 +20,7 @@ void game_over(int score){
     if (score > high){
         high = score;
     }
-    sprintf(score_str, "Final Score: %d |  High Score: %d", score, high);
+    sprintf(score_str, "Final Score: %d | High Score: %d", score, high);
     int score_x = (max_x - strlen(score_str)) / 2;
     int score_y = center_y + 4;
     mvprintw(score_y, score_x, "%s", score_str);
